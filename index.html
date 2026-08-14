@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Home — Simrat Singh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<nav><div class="wrap"><a class="brand" href="index.html">Simrat Singh</a><ul class="navlinks"><li><a class="active" href="index.html">Home</a></li>
+<li><a class="" href="about.html">About</a></li>
+<li><a class="" href="projects.html">Projects</a></li>
+<li><a class="" href="resume.html">Resume</a></li>
+<li><a class="" href="contact.html">Contact</a></li></ul></div></nav>
+
+<header class="hero">
+<div class="wrap">
+<div class="eyebrow">ML Engineer — Final-Year CSE — GNDEC Ludhiana</div>
+<h1 class="name">Simrat Singh</h1>
+<p class="hero-sub">I build applied machine-learning systems — from <b>agricultural yield prediction</b> to <b>residual-corrected trajectory forecasting</b> — and ship them as working web apps, not just notebooks.</p>
+<div class="hero-actions"><a href="projects.html" class="btn primary">View projects →</a><a href="resume.html" class="btn">Resume →</a><a href="contact.html" class="btn">Contact →</a></div>
+<div class="hero-chart">
+<svg viewBox="0 0 760 190" width="100%" preserveAspectRatio="xMinYMid meet">
+<path d="M20,150 C160,120 300,60 420,55 C540,50 640,90 740,40" fill="none" stroke="var(--rule)" stroke-width="2" stroke-dasharray="5,6"/>
+<path d="M20,150 C150,130 260,145 360,95 C460,45 560,20 740,15" fill="none" stroke="var(--signal)" stroke-width="2.5" stroke-dasharray="900" stroke-dashoffset="900"><animate attributeName="stroke-dashoffset" from="900" to="0" dur="2.2s" fill="freeze"/></path>
+<line x1="200" y1="150" x2="200" y2="120" stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
+<line x1="380" y1="95" x2="380" y2="63" stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
+<line x1="560" y1="20" x2="560" y2="75" stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
+<circle cx="740" cy="15" r="4" fill="var(--signal)"/>
+</svg>
+<div class="chart-caption"><span><span class="legend-dot" style="background:var(--rule)"></span>baseline estimate</span><span><span class="legend-dot" style="background:var(--wheat)"></span>residual correction</span><span><span class="legend-dot" style="background:var(--signal)"></span>predicted path</span></div>
+</div>
+</div>
+</header>
+<section><div class="wrap"><div class="sec-head"><span class="sec-index mono">01</span><h2 class="sec-title">What I build</h2></div>
+<div class="about-grid"><div><p>Applied ML systems that connect data, models and usable interfaces. My current work spans structured agricultural prediction and time-series trajectory forecasting.</p><a class="btn" href="about.html">More about me →</a></div>
+<dl class="factsheet"><dt>Primary stack</dt><dd>Python · XGBoost · LSTM · Flask · FastAPI · Plotly</dd><dt>Focus</dt><dd>Applied ML, agri-tech, simulation-driven forecasting</dd><dt>Location</dt><dd>Ludhiana, Punjab, India</dd></dl></div></div></section>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span><span>Built with a residual correction curve, on purpose.</span></div></footer>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body></html>

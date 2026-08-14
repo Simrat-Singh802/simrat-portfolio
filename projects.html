@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Projects — Simrat Singh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<nav><div class="wrap"><a class="brand" href="index.html">Simrat Singh</a><ul class="navlinks"><li><a class="" href="index.html">Home</a></li>
+<li><a class="" href="about.html">About</a></li>
+<li><a class="active" href="projects.html">Projects</a></li>
+<li><a class="" href="resume.html">Resume</a></li>
+<li><a class="" href="contact.html">Contact</a></li></ul></div></nav>
+
+<section><div class="wrap"><div class="sec-head"><span class="sec-index mono">02</span><h2 class="sec-title">Projects</h2></div>
+<p class="sec-lede">A separate project page keeps the portfolio clean while giving each project enough room to explain the problem, approach and technology.</p>
+<div class="project"><div class="project-top"><h3>Wheat Yield Prediction System</h3><span class="status done">Major project</span></div>
+<div class="project-role">ML + weather-driven prediction · GNDEC</div><p class="desc">Predicts district-level wheat yield across Punjab using agricultural, weather and soil features. XGBoost is the primary model, benchmarked against Random Forest and ANN. The system is packaged as a Flask web app with district and soil inputs.</p>
+<div class="tags"><span class="tag">XGBoost</span><span class="tag">Random Forest</span><span class="tag">ANN</span><span class="tag">Flask</span><span class="tag">OpenWeatherMap API</span></div>
+<div class="project-links"><a href="#" target="_blank">Repository →</a><a href="#" target="_blank">Live demo →</a></div></div>
+<div class="project"><div class="project-top"><h3>Multi-Step Trajectory Prediction</h3><span class="status done">Research project</span></div>
+<div class="project-role">Hybrid residual LSTM · FastAPI + Plotly</div><p class="desc">Forecasts future trajectory points from observed flight-state sequences. A constant-velocity baseline is corrected by a residual LSTM, with the final prediction visualized as an interactive 3D trajectory.</p>
+<div class="tags"><span class="tag">LSTM</span><span class="tag">JSBSim</span><span class="tag">FastAPI</span><span class="tag">Plotly 3D</span><span class="tag">Residual correction</span></div>
+<div class="project-links"><a href="#" target="_blank">Repository →</a><a href="#" target="_blank">Live demo →</a></div></div>
+<div class="project"><div class="project-top"><h3>Crop Leaf Disease Detection</h3><span class="status wip">In progress</span></div>
+<div class="project-role">CNN + transfer learning</div><p class="desc">Image-based crop health classification using transfer learning. The planned interface accepts a leaf image and returns a disease classification through a lightweight web application.</p>
+<div class="tags"><span class="tag">CNN</span><span class="tag">MobileNetV2</span><span class="tag">Transfer Learning</span><span class="tag">Flask</span></div>
+<div class="project-links"><a href="#" target="_blank">Repository →</a></div></div>
+</div></section>
+<section><div class="wrap"><div class="sec-head"><span class="sec-index mono">03</span><h2 class="sec-title">GitHub</h2></div>
+<p class="sec-lede">Enter your username to pull your public repositories live.</p>
+<div class="gh-controls"><input id="ghUsername" placeholder="your-github-username"><button class="btn primary" id="ghLoadBtn">Load repos</button></div><div class="gh-status" id="ghStatus"></div><div class="repo-grid" id="repoGrid"></div></div></section>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span><span>Built with a residual correction curve, on purpose.</span></div></footer>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body></html>
