@@ -14,8 +14,9 @@ import * as motion from './motion.js';
 import * as toast from './toast.js';
 import * as github from './github.js';
 import * as resume from './resume.js';
+import * as player from './player.js';
 
-const MODULES = [nav, toast, canvas, motion, reveal, github, resume];
+const MODULES = [nav, toast, canvas, motion, reveal, github, resume, player];
 
 function boot() {
   // Modules are running, so the CSS force-show fallback can stand down.

@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="css/03-components.css">
   <link rel="stylesheet" href="css/04-animations.css">
   <link rel="stylesheet" href="css/05-redesign.css">
+  <link rel="stylesheet" href="css/06-player.css">
 
   <!-- Set before paint: if JS never runs, reveal targets stay visible. -->
   <script>document.documentElement.classList.add('no-js');</script>
@@ -300,6 +301,28 @@
       <span class="mono footer-note">Residual-corrected &amp; interactive by design.</span>
     </div>
   </footer>
+
+  <!-- Opt-in audio. Never autoplays; hides itself if the file is absent.
+       Drop your own legally-obtained MP3 at audio/track.mp3 — that path is
+       gitignored, so the file is never committed or published. -->
+  <div class="audio-player" id="audioPlayer">
+    <button class="audio-toggle" type="button" id="audioToggle"
+            aria-pressed="false" aria-label="Play background music">
+      <span class="audio-icon" aria-hidden="true">
+        <svg class="icon-play" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-pause" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </span>
+      <span class="audio-label" id="audioLabel">Play</span>
+    </button>
+
+    <span class="audio-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </span>
+
+    <audio id="bgAudio" preload="none" loop>
+      <source src="audio/track.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 
   <div class="toast" id="toast"></div>
   <script type="module" src="js/main.js"></script>

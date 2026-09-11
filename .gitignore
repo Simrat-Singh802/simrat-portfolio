@@ -14,3 +14,8 @@ desktop.ini
 
 # Node (not used today, but keeps stray installs out of the repo)
 node_modules/
+
+# Audio — never commit music to a public repo. Supply your own licensed
+# file locally; the player hides itself when it's absent.
+audio/*
+!audio/README.md

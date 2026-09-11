@@ -1,0 +1,136 @@
+/* ==========================================================================
+   06-PLAYER — opt-in audio control
+
+   A small fixed pill, bottom-left so it never collides with the toast
+   (bottom-center) or the mobile drawer.
+   ========================================================================== */
+
+.audio-player {
+  position: fixed;
+  bottom: var(--sp-5);
+  left: var(--sp-5);
+  z-index: var(--z-toast);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 8px 14px 8px 10px;
+  background: rgba(11, 15, 23, 0.88);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  box-shadow: var(--shadow-lg);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.audio-player:hover {
+  border-color: var(--signal-edge);
+}
+
+.audio-player.is-playing {
+  border-color: var(--signal-edge);
+  box-shadow: var(--shadow-lg), 0 0 20px var(--signal-wash);
+}
+
+.audio-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  letter-spacing: var(--tr-snug);
+  border-radius: var(--r-pill);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.audio-toggle:hover { color: var(--text-bright); }
+
+.audio-player.is-playing .audio-toggle { color: var(--signal); }
+
+/* ---------- Icon ---------- */
+
+.audio-icon {
+  position: relative;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--signal-wash);
+  border: 1px solid var(--signal-edge);
+  color: var(--signal);
+}
+
+.audio-icon svg { display: block; }
+
+/* Swap play/pause glyphs from the single state class. */
+.audio-icon .icon-pause { display: none; }
+.audio-player.is-playing .audio-icon .icon-play  { display: none; }
+.audio-player.is-playing .audio-icon .icon-pause { display: block; }
+
+/* ---------- Equalizer bars ---------- */
+
+.audio-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  /* Hidden until playing — a static equalizer reads as broken. */
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.audio-player.is-playing .audio-bars { opacity: 1; }
+
+.audio-bars span {
+  display: block;
+  width: 2px;
+  height: 100%;
+  background: var(--signal);
+  border-radius: 1px;
+  transform-origin: 50% 100%;
+}
+
+.audio-player.is-playing .audio-bars span {
+  animation: eq-bounce 900ms ease-in-out infinite;
+}
+
+.audio-bars span:nth-child(1) { animation-delay: 0ms; }
+.audio-bars span:nth-child(2) { animation-delay: 150ms; }
+.audio-bars span:nth-child(3) { animation-delay: 300ms; }
+.audio-bars span:nth-child(4) { animation-delay: 450ms; }
+
+@keyframes eq-bounce {
+  0%, 100% { transform: scaleY(0.28); }
+  50%      { transform: scaleY(1); }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-player.is-playing .audio-bars span {
+    animation: none;
+    transform: scaleY(0.55);
+  }
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 560px) {
+  .audio-player {
+    bottom: var(--sp-4);
+    left: var(--sp-4);
+    padding: 7px 12px 7px 9px;
+  }
+  /* Icon + bars carry the meaning; the word is redundant when tight. */
+  .audio-label { display: none; }
+}
+
+/* The control is chrome, not content — never print it. */
+@media print {
+  .audio-player { display: none !important; }
+}
