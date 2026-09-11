@@ -1,0 +1,429 @@
+/* ==========================================================================
+   02-LAYOUT — nav, drawer, hero, sections, footer
+   ========================================================================== */
+
+/* ---------- Scroll progress ---------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: var(--grad-signal);
+  z-index: calc(var(--z-nav) + 1);
+  pointer-events: none;
+}
+
+/* Pure-CSS scroll-linked bar where supported; JS never touches it. */
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progress-grow linear;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes progress-grow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+/* ---------- Nav ---------- */
+
+.nav-sentinel {
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: 1px;
+  pointer-events: none;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: rgba(7, 9, 14, 0.62);
+  backdrop-filter: blur(var(--blur-nav)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur-nav)) saturate(150%);
+  border-bottom: 1px solid transparent;
+  transition:
+    background var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* .is-stuck is set by js/nav.js via an IntersectionObserver sentinel. */
+nav.is-stuck {
+  background: rgba(6, 8, 12, 0.86);
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--nav-h);
+  transition: height var(--dur-base) var(--ease-out);
+}
+
+nav.is-stuck .nav-wrap { height: var(--nav-h-compact); }
+
+.brand {
+  font-family: var(--font-mono);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--text-bright);
+  text-decoration: none;
+  letter-spacing: var(--tr-tight);
+  white-space: nowrap;
+  display: inline-flex;
+  gap: 1px;
+}
+
+.brand-bracket {
+  color: var(--signal);
+  transition: transform var(--dur-base) var(--ease-spring);
+  display: inline-block;
+}
+
+.brand:hover .brand-bracket:first-child { transform: translateX(-3px); }
+.brand:hover .brand-bracket:last-child  { transform: translateX(3px); }
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.6rem);
+}
+
+.nav-item {
+  position: relative;
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding-block: 6px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--signal);
+  box-shadow: 0 0 8px var(--signal);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.nav-item:hover { color: var(--text-bright); }
+.nav-item:hover::after { transform: scaleX(1); }
+
+/* Active state is derived from the URL by js/nav.js, never hard-coded. */
+.nav-item[aria-current='page'] { color: var(--text-bright); }
+.nav-item[aria-current='page']::after { transform: scaleX(1); }
+
+/* ---------- Mobile drawer ---------- */
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.nav-toggle:hover { background: rgba(255, 255, 255, 0.08); }
+
+.nav-toggle-box {
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+
+.nav-toggle-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-bright);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-fast) linear,
+    top var(--dur-base) var(--ease-out);
+}
+
+.nav-toggle-bar:nth-child(1) { top: 0; }
+.nav-toggle-bar:nth-child(2) { top: 6px; }
+.nav-toggle-bar:nth-child(3) { top: 12px; }
+
+/* Morph to an X */
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(1) {
+  top: 6px;
+  transform: rotate(45deg);
+}
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(3) {
+  top: 6px;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+
+  .navlinks {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-drawer);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--sp-2);
+    padding: var(--sp-10) var(--gutter);
+    background: rgba(5, 7, 11, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* Closed: fully hidden AND non-interactive, so links stay untabbable. */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition:
+      opacity var(--dur-base) var(--ease-out),
+      transform var(--dur-base) var(--ease-out),
+      visibility 0s linear var(--dur-base);
+  }
+
+  .navlinks.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  .navlinks li {
+    width: 100%;
+    opacity: 0;
+    transform: translateX(-14px);
+    transition:
+      opacity var(--dur-slow) var(--ease-out),
+      transform var(--dur-slow) var(--ease-out);
+  }
+
+  .navlinks.is-open li {
+    opacity: 1;
+    transform: translateX(0);
+    /* --i is set by js/nav.js for the cascade. */
+    transition-delay: calc(var(--i, 0) * 55ms + 90ms);
+  }
+
+  .nav-item {
+    display: block;
+    width: 100%;
+    font-family: var(--font-serif);
+    font-size: var(--fs-xl);
+    padding-block: var(--sp-3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-item::after { display: none; }
+
+  .nav-item[aria-current='page'] {
+    color: var(--signal);
+  }
+
+  /* Locks the page behind an open drawer. Both axes are set explicitly —
+     body already carries overflow-x:hidden, and the shorthand alone would
+     leave overflow-y computing to auto. */
+  body.nav-open {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-top: clamp(3rem, 2rem + 6vw, 6rem);
+  padding-bottom: var(--sp-9);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 7px 15px;
+  border-radius: var(--r-pill);
+  background: var(--signal-wash);
+  border: 1px solid var(--signal-edge);
+  font-size: var(--fs-xs);
+  color: var(--signal);
+  margin-bottom: var(--sp-5);
+}
+
+.pulse-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  background: var(--signal);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--signal);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-3xl);
+  font-weight: 500;
+  letter-spacing: var(--tr-tight);
+  line-height: var(--lh-tight);
+  margin-bottom: var(--sp-5);
+}
+
+/* Gradient text with a guaranteed fallback: `color` is set first, the clip
+   only applies where supported, and forced-colors restores currentColor. */
+.gradient-text {
+  color: var(--text-bright);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gradient-text {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.hero-sub {
+  font-size: var(--fs-md);
+  color: var(--muted);
+  max-width: var(--measure-narrow);
+  margin-bottom: var(--sp-7);
+  font-weight: 300;
+  line-height: var(--lh-relaxed);
+}
+
+.hero-sub .highlight {
+  color: var(--text-bright);
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+}
+
+/* Hairline underglow on the emphasized phrases. */
+.hero-sub .highlight::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--signal), transparent);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-9);
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+  padding-block: var(--section-pad);
+}
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+
+.sec-index {
+  color: var(--signal);
+  font-size: var(--fs-sm);
+  flex: none;
+}
+
+.sec-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  letter-spacing: var(--tr-snug);
+}
+
+.sec-lede {
+  color: var(--muted);
+  font-size: var(--fs-md);
+  max-width: var(--measure-narrow);
+  margin-bottom: var(--sp-7);
+  line-height: var(--lh-relaxed);
+}
+
+/* ---------- Content grids ---------- */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .about-grid,
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding-block: var(--sp-7);
+  margin-top: var(--sp-6);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  background: linear-gradient(180deg, transparent, rgba(5, 7, 11, 0.85));
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.footer-note {
+  color: var(--faint);
+  font-size: var(--fs-xs);
+}

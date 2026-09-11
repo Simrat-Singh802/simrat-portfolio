@@ -1,42 +1,307 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Home — Simrat Singh</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head><body>
-<nav><div class="wrap"><a class="brand" href="index.html">Simrat Singh</a><ul class="navlinks"><li><a class="active" href="index.html">Home</a></li>
-<li><a class="" href="about.html">About</a></li>
-<li><a class="" href="projects.html">Projects</a></li>
-<li><a class="" href="resume.html">Resume</a></li>
-<li><a class="" href="contact.html">Contact</a></li></ul></div></nav>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simrat Singh — Applied ML Engineer</title>
 
-<header class="hero">
-<div class="wrap">
-<div class="eyebrow">ML Engineer — Final-Year CSE — GNDEC Ludhiana</div>
-<h1 class="name">Simrat Singh</h1>
-<p class="hero-sub">I build applied machine-learning systems — from <b>agricultural yield prediction</b> to <b>residual-corrected trajectory forecasting</b> — and ship them as working web apps, not just notebooks.</p>
-<div class="hero-actions"><a href="projects.html" class="btn primary">View projects →</a><a href="resume.html" class="btn">Resume →</a><a href="contact.html" class="btn">Contact →</a></div>
-<div class="hero-chart">
-<svg viewBox="0 0 760 190" width="100%" preserveAspectRatio="xMinYMid meet">
-<path d="M20,150 C160,120 300,60 420,55 C540,50 640,90 740,40" fill="none" stroke="var(--rule)" stroke-width="2" stroke-dasharray="5,6"/>
-<path d="M20,150 C150,130 260,145 360,95 C460,45 560,20 740,15" fill="none" stroke="var(--signal)" stroke-width="2.5" stroke-dasharray="900" stroke-dashoffset="900"><animate attributeName="stroke-dashoffset" from="900" to="0" dur="2.2s" fill="freeze"/></path>
-<line x1="200" y1="150" x2="200" y2="120" stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
-<line x1="380" y1="95" x2="380" y2="63" stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
-<line x1="560" y1="20" x2="560" y2="75" stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
-<circle cx="740" cy="15" r="4" fill="var(--signal)"/>
-</svg>
-<div class="chart-caption"><span><span class="legend-dot" style="background:var(--rule)"></span>baseline estimate</span><span><span class="legend-dot" style="background:var(--wheat)"></span>residual correction</span><span><span class="legend-dot" style="background:var(--signal)"></span>predicted path</span></div>
-</div>
-</div>
-</header>
-<section><div class="wrap"><div class="sec-head"><span class="sec-index mono">01</span><h2 class="sec-title">What I build</h2></div>
-<div class="about-grid"><div><p>Applied ML systems that connect data, models and usable interfaces. My current work spans structured agricultural prediction and time-series trajectory forecasting.</p><a class="btn" href="about.html">More about me →</a></div>
-<dl class="factsheet"><dt>Primary stack</dt><dd>Python · XGBoost · LSTM · Flask · FastAPI · Plotly</dd><dt>Focus</dt><dd>Applied ML, agri-tech, simulation-driven forecasting</dd><dt>Location</dt><dd>Ludhiana, Punjab, India</dd></dl></div></div></section>
+  <meta name="description" content="Simrat Singh — applied machine learning engineer building agricultural yield models and residual-corrected trajectory forecasting systems. B.Tech CSE, GNDEC Ludhiana.">
+  <meta name="author" content="Simrat Singh">
+  <meta name="theme-color" content="#07090e">
+  <link rel="canonical" href="index.html">
 
-<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span><span>Built with a residual correction curve, on purpose.</span></div></footer>
-<div class="toast" id="toast"></div>
-<script src="script.js"></script>
-</body></html>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Simrat Singh — Applied ML Engineer">
+  <meta property="og:description" content="Applied machine learning systems: agricultural yield modeling and residual-corrected trajectory forecasting.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simrat Singh — Applied ML Engineer">
+  <meta name="twitter:description" content="Applied machine learning systems: agricultural yield modeling and residual-corrected trajectory forecasting.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307090e'/%3E%3Cpath d='M6 22C11 22 13 10 18 10s5 8 8 8' stroke='%2338bdf8' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-base.css">
+  <link rel="stylesheet" href="css/02-layout.css">
+  <link rel="stylesheet" href="css/03-components.css">
+  <link rel="stylesheet" href="css/04-animations.css">
+  <link rel="stylesheet" href="css/05-redesign.css">
+
+  <!-- Set before paint: if JS never runs, reveal targets stay visible. -->
+  <script>document.documentElement.classList.add('no-js');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Simrat Singh",
+    "jobTitle": "Applied Machine Learning Engineer",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Guru Nanak Dev Engineering College, Ludhiana"
+    },
+    "knowsAbout": [
+      "Machine Learning", "XGBoost", "PyTorch", "LSTM",
+      "Agricultural Yield Modeling", "Trajectory Forecasting", "FastAPI"
+    ]
+  }
+  </script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <span class="nav-sentinel" aria-hidden="true"></span>
+
+  <!-- NAV — identical across all pages; active state derived in js/nav.js -->
+  <nav>
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-bracket">[</span>Simrat Singh<span class="brand-bracket">]</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="navlinks" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-box" aria-hidden="true">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </span>
+      </button>
+      <ul class="navlinks" id="navlinks">
+        <li><a class="nav-item" href="index.html">Home</a></li>
+        <li><a class="nav-item" href="about.html">About</a></li>
+        <li><a class="nav-item" href="projects.html">Projects</a></li>
+        <li><a class="nav-item" href="resume.html">Resume</a></li>
+        <li><a class="nav-item" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero">
+      <div class="wrap">
+        <div class="hero-layout">
+          <div class="hero-main">
+            <div class="status-pill" data-reveal="fade">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span class="mono">Available for Applied ML Roles · B.Tech CSE</span>
+            </div>
+
+            <h1 class="name gradient-text" data-split-words>Simrat Singh</h1>
+
+            <p class="hero-sub" data-reveal="up">
+              I engineer applied machine-learning systems — bridging the gap between
+              <span class="highlight">agricultural yield modeling</span> and
+              <span class="highlight">residual-corrected trajectory forecasting</span>.
+              Engineered for real-world inference, not just notebooks.
+            </p>
+
+            <div class="hero-actions" data-reveal="up">
+              <a href="projects.html" class="btn primary">
+                <span>Explore Projects</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="resume.html" class="btn glass">
+                <span>Resume</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+              <a href="contact.html" class="btn glass">Contact</a>
+            </div>
+          </div>
+
+          <!-- Instrument-panel rail: the key figures, read at a glance. -->
+          <dl class="hero-rail" data-reveal="up">
+            <div class="rail-row">
+              <dt class="rail-key">Best RMSE</dt>
+              <dd class="rail-val"><span data-count-to="0.0142" data-count-decimals="4">0</span></dd>
+            </div>
+            <div class="rail-row">
+              <dt class="rail-key">Districts modeled</dt>
+              <dd class="rail-val"><span data-count-to="22">0</span><span class="unit">+</span></dd>
+            </div>
+            <div class="rail-row">
+              <dt class="rail-key">Systems shipped</dt>
+              <dd class="rail-val"><span data-count-to="3">0</span></dd>
+            </div>
+            <div class="rail-row">
+              <dt class="rail-key">Focus</dt>
+              <dd class="rail-val">Applied ML</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Telemetry chart -->
+        <div class="hero-chart glass-card spotlight-card" data-reveal="up">
+          <div class="chart-header">
+            <span class="mono chart-tag">TELEMETRY // MODEL RESIDUALS</span>
+            <span class="mono chart-metric">Loss: 0.0142 RMSE</span>
+          </div>
+
+          <svg viewBox="0 0 760 190" width="100%" preserveAspectRatio="xMinYMid meet"
+               class="chart-svg" role="img"
+               aria-label="Line chart comparing a baseline trajectory estimate against a residual-corrected predicted trajectory, with three residual correction markers.">
+            <defs>
+              <linearGradient id="signalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#818cf8"/>
+              </linearGradient>
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <path d="M20,150 C160,120 300,60 420,55 C540,50 640,90 740,40" fill="none"
+                  stroke="var(--rule)" stroke-width="2" stroke-dasharray="6,6"/>
+
+            <path class="animated-path" data-reveal="line"
+                  d="M20,150 C150,130 260,145 360,95 C460,45 560,20 740,15"
+                  fill="none" stroke="url(#signalGrad)" stroke-width="3" filter="url(#glow)"/>
+
+            <line class="residual-line" x1="200" y1="150" x2="200" y2="120" stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <line class="residual-line" x1="380" y1="95"  x2="380" y2="63"  stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <line class="residual-line" x1="560" y1="20"  x2="560" y2="75"  stroke="var(--wheat)" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+            <circle cx="740" cy="15" r="5" fill="#38bdf8" filter="url(#glow)"/>
+            <circle cx="740" cy="15" r="9" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.6">
+              <animate attributeName="r" values="6;13;6" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.8;0.1;0.8" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+
+          <div class="chart-caption">
+            <span><span class="legend-dot" style="background:var(--rule)"></span>Baseline Estimate</span>
+            <span><span class="legend-dot" style="background:var(--wheat)"></span>Residual Correction</span>
+            <span><span class="legend-dot" style="background:var(--signal)"></span>Predicted Trajectory</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tech marquee -->
+    <div class="wrap" data-reveal="fade">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">XGBoost</span>
+          <span class="marquee-item">PyTorch</span>
+          <span class="marquee-item">LSTM</span>
+          <span class="marquee-item">FastAPI</span>
+          <span class="marquee-item">Flask</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">scikit-learn</span>
+          <span class="marquee-item">Pandas</span>
+          <span class="marquee-item">NumPy</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Plotly</span>
+          <!-- Duplicated for a seamless -50% loop. -->
+          <span class="marquee-item">Python</span>
+          <span class="marquee-item">XGBoost</span>
+          <span class="marquee-item">PyTorch</span>
+          <span class="marquee-item">LSTM</span>
+          <span class="marquee-item">FastAPI</span>
+          <span class="marquee-item">Flask</span>
+          <span class="marquee-item">Docker</span>
+          <span class="marquee-item">scikit-learn</span>
+          <span class="marquee-item">Pandas</span>
+          <span class="marquee-item">NumPy</span>
+          <span class="marquee-item">SQL</span>
+          <span class="marquee-item">Plotly</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head" data-reveal="up">
+          <span class="sec-index mono">01 //</span>
+          <h2 class="sec-title">What I Build</h2>
+        </div>
+
+        <div class="about-grid" data-reveal-group>
+          <div class="prose" data-reveal="up">
+            <p>
+              I specialize in combining structured empirical datasets with deep neural
+              networks and gradient boosting pipelines. The goal is always tangible:
+              transforming high-dimensional tabular or time-series data into
+              low-latency web services.
+            </p>
+            <a class="btn glass mt-4" href="about.html">
+              <span>Read research philosophy</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <dl class="factsheet" data-reveal="up">
+            <dt class="mono">Primary stack</dt>
+            <dd>Python · XGBoost · PyTorch · FastAPI · Docker · SQL</dd>
+
+            <dt class="mono">Domain focus</dt>
+            <dd>Agricultural yield modeling · Simulation · Time-series</dd>
+
+            <dt class="mono">Institution</dt>
+            <dd>Guru Nanak Dev Engineering College, Ludhiana</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full-bleed band: breaks the single-column rhythm. -->
+    <div class="band">
+      <div class="wrap band-inner" data-reveal-group>
+        <div class="band-item" data-reveal="up">
+          <span class="band-num mono">01 / TABULAR</span>
+          <h3 class="band-title">Structured inference</h3>
+          <p class="band-text">
+            Gradient-boosted ensembles over soil chemistry and climate telemetry,
+            benchmarked against neural baselines rather than assumed better.
+          </p>
+        </div>
+        <div class="band-item" data-reveal="up">
+          <span class="band-num mono">02 / SEQUENCE</span>
+          <h3 class="band-title">Residual correction</h3>
+          <p class="band-text">
+            A kinematic solver carries the signal; an LSTM learns only what the
+            solver gets wrong. Drift stops compounding across horizons.
+          </p>
+        </div>
+        <div class="band-item" data-reveal="up">
+          <span class="band-num mono">03 / VISION</span>
+          <h3 class="band-title">Edge classification</h3>
+          <p class="band-text">
+            Transfer-learned MobileNetV2 tuned for low-latency diagnosis on
+            hardware that fits in the field, not the lab.
+          </p>
+        </div>
+        <div class="band-item" data-reveal="up">
+          <span class="band-num mono">04 / DELIVERY</span>
+          <h3 class="band-title">Deployment</h3>
+          <p class="band-text">
+            FastAPI and Flask services behind Docker, because a model that
+            can't be called isn't finished.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-wrap">
+      <span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span>
+      <span class="mono footer-note">Residual-corrected &amp; interactive by design.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+/* ==========================================================================
+   00-TOKENS — design system primitives
+   Nothing in this file selects anything. Tokens only.
+   ========================================================================== */
+
+:root {
+  /* ---------- Neutral ramp (cool, blue-leaning slate) ---------- */
+  --n-950: #05070b;
+  --n-900: #07090e;
+  --n-850: #0b0f17;
+  --n-800: #111827;
+  --n-700: #1a2338;
+  --n-600: #334155;
+  --n-500: #475569;
+  --n-400: #64748b;
+  --n-300: #94a3b8;
+  --n-200: #cbd5e1;
+  --n-100: #e2e8f0;
+  --n-050: #f1f5f9;
+  --n-000: #f8fafc;
+
+  /* ---------- Surfaces & elevation ---------- */
+  --bg: var(--n-900);
+  --bg-deep: var(--n-950);
+  --surface-1: rgba(17, 24, 39, 0.55);
+  --surface-2: rgba(26, 35, 58, 0.62);
+  --surface-3: rgba(38, 50, 78, 0.70);
+  --surface-solid: var(--n-850);
+  /* Legacy alias — older rules referenced --surface / --surface-hover */
+  --surface: var(--surface-1);
+  --surface-hover: var(--surface-2);
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-glow: rgba(56, 189, 248, 0.30);
+
+  /* ---------- Text ---------- */
+  --text: var(--n-050);
+  --text-bright: var(--n-000);
+  --text-body: var(--n-200);
+  --muted: var(--n-300);
+  --faint: var(--n-400);
+  --rule: var(--n-600);
+
+  /* ---------- Brand accents ---------- */
+  --signal: #38bdf8;
+  --signal-bright: #7dd3fc;
+  --signal-deep: #0284c7;
+  --signal-ink: #04121f;
+  --signal-glow: rgba(56, 189, 248, 0.25);
+  --signal-wash: rgba(56, 189, 248, 0.08);
+  --signal-edge: rgba(56, 189, 248, 0.25);
+
+  --wheat: #fbbf24;
+  --wheat-wash: rgba(251, 191, 36, 0.10);
+  --wheat-edge: rgba(251, 191, 36, 0.28);
+
+  --accent: #818cf8;
+  --accent-wash: rgba(129, 140, 248, 0.10);
+  --accent-edge: rgba(129, 140, 248, 0.30);
+
+  /* ---------- Semantic state ---------- */
+  --success: #4ade80;
+  --success-wash: rgba(34, 197, 94, 0.08);
+  --success-edge: rgba(34, 197, 94, 0.28);
+
+  --danger: #f87171;
+  --danger-wash: rgba(239, 68, 68, 0.08);
+  --danger-edge: rgba(239, 68, 68, 0.35);
+
+  --warning: var(--wheat);
+  --warning-wash: var(--wheat-wash);
+  --warning-edge: var(--wheat-edge);
+
+  /* ---------- Gradients ---------- */
+  --grad-signal: linear-gradient(135deg, var(--signal) 0%, var(--accent) 100%);
+  --grad-text: linear-gradient(180deg, var(--n-000) 38%, var(--n-200) 100%);
+  --grad-heat: linear-gradient(135deg, var(--wheat) 0%, var(--signal) 100%);
+
+  /* ---------- Typography ---------- */
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Fluid type scale — 320px → 1440px viewport */
+  --fs-xs:    clamp(0.72rem, 0.70rem + 0.10vw, 0.78rem);
+  --fs-sm:    clamp(0.82rem, 0.79rem + 0.14vw, 0.90rem);
+  --fs-base:  clamp(0.94rem, 0.90rem + 0.20vw, 1.05rem);
+  --fs-md:    clamp(1.05rem, 0.99rem + 0.30vw, 1.22rem);
+  --fs-lg:    clamp(1.20rem, 1.09rem + 0.55vw, 1.50rem);
+  --fs-xl:    clamp(1.45rem, 1.24rem + 1.05vw, 2.10rem);
+  --fs-2xl:   clamp(1.85rem, 1.44rem + 2.05vw, 3.00rem);
+  --fs-3xl:   clamp(2.60rem, 1.60rem + 5.00vw, 5.00rem);
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.28;
+  --lh-normal: 1.6;
+  --lh-relaxed: 1.72;
+
+  --tr-tight: -0.04em;
+  --tr-snug: -0.02em;
+  --tr-wide: 0.08em;
+  --tr-wider: 0.14em;
+
+  /* ---------- Spacing (8pt rhythm, fluid at the top end) ---------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 2.5rem;
+  --sp-8: 3rem;
+  --sp-9: clamp(3rem, 2rem + 4vw, 4.5rem);
+  --sp-10: clamp(4rem, 2.5rem + 6vw, 7rem);
+
+  --section-pad: clamp(3.5rem, 2rem + 6vw, 6.5rem);
+
+  /* ---------- Radii ---------- */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 18px;
+  --r-2xl: 24px;
+  --r-pill: 9999px;
+
+  /* ---------- Layout ---------- */
+  --measure: 1100px;
+  --measure-narrow: 68ch;
+  --gutter: clamp(1.15rem, 4vw, 2.5rem);
+  --nav-h: 68px;
+  --nav-h-compact: 58px;
+
+  /* ---------- Elevation ---------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 18px -8px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 16px 40px -12px rgba(0, 0, 0, 0.65);
+  --shadow-xl: 0 28px 70px -20px rgba(0, 0, 0, 0.75);
+  --shadow-signal: 0 0 24px var(--signal-glow);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+  --dur-slower: 720ms;
+  --dur-reveal: 800ms;
+
+  --stagger: 70ms;
+
+  /* ---------- Blur ---------- */
+  --blur-nav: 14px;
+  --blur-card: 16px;
+  --blur-sm: 8px;
+
+  /* ---------- Z-index ladder ---------- */
+  --z-canvas: 0;
+  --z-spotlight: 1;
+  --z-content: 2;
+  --z-nav: 100;
+  --z-drawer: 200;
+  --z-toast: 300;
+  --z-skip: 400;
+}

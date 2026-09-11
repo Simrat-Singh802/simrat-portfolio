@@ -1,27 +1,147 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>About — Simrat Singh</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head><body>
-<nav><div class="wrap"><a class="brand" href="index.html">Simrat Singh</a><ul class="navlinks"><li><a class="" href="index.html">Home</a></li>
-<li><a class="active" href="about.html">About</a></li>
-<li><a class="" href="projects.html">Projects</a></li>
-<li><a class="" href="resume.html">Resume</a></li>
-<li><a class="" href="contact.html">Contact</a></li></ul></div></nav>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Simrat Singh</title>
 
-<section><div class="wrap"><div class="sec-head"><span class="sec-index mono">01</span><h2 class="sec-title">About</h2></div>
-<div class="about-grid"><div>
-<p>I'm a final-year B.Tech Computer Science and Engineering student at Guru Nanak Dev Engineering College, Ludhiana, focused on applied machine learning — the kind that goes from a training notebook to a deployed, usable interface.</p>
-<p>Most of my project work sits at the intersection of tabular prediction and time-series modelling: gradient-boosted trees for structured agricultural data, and recurrent architectures for continuous trajectory data.</p>
-<p class="mono" style="font-size:.8rem;color:var(--ink-soft)">// currently: wrapping up major project work + exploring computer-vision follow-on work</p>
-</div><dl class="factsheet"><dt>Model families</dt><dd>XGBoost, Random Forest, ANN, K-Means, LSTM</dd><dt>Stack</dt><dd>Python, Flask, FastAPI, JavaScript, Plotly</dd><dt>Institution</dt><dd>GNDEC, Ludhiana — B.Tech CSE, Final Year</dd><dt>Interests</dt><dd>Applied ML systems, agri-tech, simulation-driven forecasting</dd></dl></div>
-<ul class="stack" style="margin-top:30px"><li class="chip">Python</li><li class="chip">XGBoost</li><li class="chip">TensorFlow / Keras</li><li class="chip">LSTM</li><li class="chip">Flask</li><li class="chip">FastAPI</li><li class="chip">Plotly</li><li class="chip">Pandas</li><li class="chip">scikit-learn</li><li class="chip">LaTeX</li></ul></div></section>
+  <meta name="description" content="About Simrat Singh — B.Tech Computer Science student at GNDEC Ludhiana working on applied machine learning: tabular prediction, time-series modelling, and deployed inference interfaces.">
+  <meta name="author" content="Simrat Singh">
+  <meta name="theme-color" content="#07090e">
+  <link rel="canonical" href="about.html">
 
-<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span><span>Built with a residual correction curve, on purpose.</span></div></footer>
-<div class="toast" id="toast"></div>
-<script src="script.js"></script>
-</body></html>
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="About — Simrat Singh">
+  <meta property="og:description" content="Applied machine learning, from training notebook to deployed interface.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — Simrat Singh">
+  <meta name="twitter:description" content="Applied machine learning, from training notebook to deployed interface.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307090e'/%3E%3Cpath d='M6 22C11 22 13 10 18 10s5 8 8 8' stroke='%2338bdf8' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-base.css">
+  <link rel="stylesheet" href="css/02-layout.css">
+  <link rel="stylesheet" href="css/03-components.css">
+  <link rel="stylesheet" href="css/04-animations.css">
+  <link rel="stylesheet" href="css/05-redesign.css">
+
+  <!-- Set before paint: if JS never runs, reveal targets stay visible. -->
+  <script>document.documentElement.classList.add('no-js');</script>
+</head>
+<body data-page="about">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <span class="nav-sentinel" aria-hidden="true"></span>
+
+  <!-- NAV — identical across all pages; active state derived in js/nav.js -->
+  <nav>
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-bracket">[</span>Simrat Singh<span class="brand-bracket">]</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="navlinks" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-box" aria-hidden="true">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </span>
+      </button>
+      <ul class="navlinks" id="navlinks">
+        <li><a class="nav-item" href="index.html">Home</a></li>
+        <li><a class="nav-item" href="about.html">About</a></li>
+        <li><a class="nav-item" href="projects.html">Projects</a></li>
+        <li><a class="nav-item" href="resume.html">Resume</a></li>
+        <li><a class="nav-item" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head" data-reveal="up">
+          <span class="sec-index mono">01 //</span>
+          <h1 class="sec-title">About</h1>
+        </div>
+
+        <p class="sec-lede" data-reveal="up">
+          Applied machine learning, from the training notebook through to a
+          deployed interface someone can actually use.
+        </p>
+
+        <div class="about-grid" data-reveal-group>
+          <div class="prose" data-reveal="up">
+            <p>
+              I'm a B.Tech Computer Science and Engineering student at Guru Nanak Dev
+              Engineering College, Ludhiana, focused on applied machine learning — the
+              kind that goes from a training notebook to a deployed, usable interface.
+            </p>
+            <p>
+              Most of my project work sits at the intersection of tabular prediction and
+              time-series modelling: gradient-boosted trees for structured agricultural
+              data, and recurrent architectures for continuous trajectory data.
+            </p>
+            <p>
+              What interests me is the part after the model converges — turning a
+              validated architecture into a low-latency service with a real interface,
+              and making the residual structure of its errors legible rather than hidden.
+            </p>
+            <p class="mono prose-note">
+              // currently: wrapping up major project work + exploring
+              computer-vision follow-on work
+            </p>
+          </div>
+
+          <dl class="factsheet" data-reveal="up">
+            <dt class="mono">Model families</dt>
+            <dd>XGBoost, Random Forest, ANN, K-Means, LSTM</dd>
+
+            <dt class="mono">Stack</dt>
+            <dd>Python, Flask, FastAPI, JavaScript, Plotly</dd>
+
+            <dt class="mono">Institution</dt>
+            <dd>GNDEC, Ludhiana — B.Tech CSE</dd>
+
+            <dt class="mono">Interests</dt>
+            <dd>Applied ML systems, agri-tech, simulation-driven forecasting</dd>
+          </dl>
+        </div>
+
+        <h2 class="sr-only">Technologies</h2>
+        <ul class="stack" data-reveal-group>
+          <li class="chip" data-reveal="scale">Python</li>
+          <li class="chip" data-reveal="scale">XGBoost</li>
+          <li class="chip" data-reveal="scale">TensorFlow / Keras</li>
+          <li class="chip" data-reveal="scale">LSTM</li>
+          <li class="chip" data-reveal="scale">Flask</li>
+          <li class="chip" data-reveal="scale">FastAPI</li>
+          <li class="chip" data-reveal="scale">Plotly</li>
+          <li class="chip" data-reveal="scale">Pandas</li>
+          <li class="chip" data-reveal="scale">scikit-learn</li>
+          <li class="chip" data-reveal="scale">LaTeX</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-wrap">
+      <span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span>
+      <span class="mono footer-note">Residual-corrected &amp; interactive by design.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

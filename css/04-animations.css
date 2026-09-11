@@ -1,0 +1,203 @@
+/* ==========================================================================
+   04-ANIMATIONS — keyframes + the [data-reveal] state machine
+   JS only ever toggles .is-revealed and sets --i. All timing lives here.
+   ========================================================================== */
+
+/* ---------- Keyframes ---------- */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ==========================================================================
+   Reveal state machine
+   ==========================================================================
+   Contract:
+     data-reveal="up|fade|scale|clip|line"  → chooses the variant
+     data-reveal-group on a parent          → JS sets --i on children
+     .is-revealed                           → the single class JS toggles
+
+   SAFETY: three independent guarantees that content is never stuck hidden —
+     1. prefers-reduced-motion force-shows everything (01-base.css)
+     2. .no-js force-shows everything (set inline in <head> before paint)
+     3. js/reveal.js un-hides all on a 3s timeout and on observer failure
+   ========================================================================== */
+
+[data-reveal] {
+  will-change: opacity, transform;
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out),
+    clip-path var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+[data-reveal='up']    { opacity: 0; transform: translateY(26px); }
+[data-reveal='fade']  { opacity: 0; }
+[data-reveal='scale'] { opacity: 0; transform: scale(0.94); }
+[data-reveal='left']  { opacity: 0; transform: translateX(-26px); }
+[data-reveal='right'] { opacity: 0; transform: translateX(26px); }
+
+[data-reveal='clip'] {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+}
+
+/* Revealed state — one class, all variants. */
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+  will-change: auto;
+}
+
+/* If JS is absent or errored, nothing may stay hidden. */
+.no-js [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  transition: none !important;
+}
+
+/* ---------- Hero word reveal ==========================================
+   js/motion.js wraps each word in .word > .word-inner, so the mask is
+   the .word overflow and only .word-inner moves. Split on words, never
+   characters — per-character destroys screen-reader output.
+   ======================================================================== */
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* Descenders (g, y, p) would otherwise be clipped by overflow:hidden. */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+/* Gradient text + word splitting ======================================
+   .gradient-text paints a gradient on itself and sets text-fill to
+   transparent. Once the words are split, the glyphs live in child spans
+   that inherit the transparent fill but NOT the gradient — leaving the
+   text invisible. Re-apply the gradient at the span that holds the text.
+   ==================================================================== */
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gradient-text .word-inner {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.word-inner {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform var(--dur-slower) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 48ms);
+}
+
+.is-revealed .word-inner,
+.words-in .word-inner {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-inner { transform: none !important; }
+}
+
+.no-js .word-inner { transform: none !important; }
+
+/* ---------- SVG path draw ---------- */
+
+.animated-path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+
+/* Legacy autoplay path (kept for any non-reveal usage). */
+.animated-path.autoplay {
+  animation: drawLine 2.8s var(--ease-out) forwards;
+}
+
+/* Reveal-driven draw — fires when scrolled into view. */
+[data-reveal='line'] .animated-path,
+.animated-path[data-reveal='line'] {
+  transition: stroke-dashoffset 2.4s var(--ease-out);
+}
+
+[data-reveal='line'].is-revealed .animated-path,
+.animated-path[data-reveal='line'].is-revealed {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-path {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+}
+
+.no-js .animated-path {
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+}
+
+/* ---------- Tilt ======================================================
+   The tilt transform lives on a WRAPPER, never on the .glass-card
+   itself — animating transform on a backdrop-filter element forces a
+   recomposite of the blur every frame and tanks the framerate.
+   ======================================================================== */
+
+.tilt-wrap {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.tilt-inner {
+  transition: transform var(--dur-slow) var(--ease-out);
+  transform:
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .tilt-inner { transform: none !important; }
+}
+
+/* ---------- View transitions ---------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: fade-in var(--dur-base) var(--ease-out) reverse;
+}
+
+::view-transition-new(root) {
+  animation: fade-in var(--dur-slow) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

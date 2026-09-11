@@ -1,27 +1,139 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Contact — Simrat Singh</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head><body>
-<nav><div class="wrap"><a class="brand" href="index.html">Simrat Singh</a><ul class="navlinks"><li><a class="" href="index.html">Home</a></li>
-<li><a class="" href="about.html">About</a></li>
-<li><a class="" href="projects.html">Projects</a></li>
-<li><a class="" href="resume.html">Resume</a></li>
-<li><a class="active" href="contact.html">Contact</a></li></ul></div></nav>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Simrat Singh</title>
 
-<section><div class="wrap"><div class="sec-head"><span class="sec-index mono">05</span><h2 class="sec-title">Contact</h2></div>
-<p class="sec-lede">Use the links below to connect with me about internships, projects and opportunities.</p>
-<div class="contact-grid">
-<div class="contact-item"><div class="label">Email</div><a href="mailto:your.email@example.com">your.email@example.com</a></div>
-<div class="contact-item"><div class="label">GitHub</div><a href="https://github.com/your-username" target="_blank">github.com/your-username</a></div>
-<div class="contact-item"><div class="label">LinkedIn</div><a href="https://linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></div>
-</div></div></section>
+  <meta name="description" content="Get in touch with Simrat Singh about internships, applied machine learning projects, and opportunities.">
+  <meta name="author" content="Simrat Singh">
+  <meta name="theme-color" content="#07090e">
+  <link rel="canonical" href="contact.html">
 
-<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span><span>Built with a residual correction curve, on purpose.</span></div></footer>
-<div class="toast" id="toast"></div>
-<script src="script.js"></script>
-</body></html>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact — Simrat Singh">
+  <meta property="og:description" content="Reach out about internships, projects and opportunities in applied machine learning.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Simrat Singh">
+  <meta name="twitter:description" content="Reach out about internships, projects and opportunities in applied machine learning.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307090e'/%3E%3Cpath d='M6 22C11 22 13 10 18 10s5 8 8 8' stroke='%2338bdf8' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-base.css">
+  <link rel="stylesheet" href="css/02-layout.css">
+  <link rel="stylesheet" href="css/03-components.css">
+  <link rel="stylesheet" href="css/04-animations.css">
+  <link rel="stylesheet" href="css/05-redesign.css">
+
+  <!-- Set before paint: if JS never runs, reveal targets stay visible. -->
+  <script>document.documentElement.classList.add('no-js');</script>
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <span class="nav-sentinel" aria-hidden="true"></span>
+
+  <!-- NAV — identical across all pages; active state derived in js/nav.js -->
+  <nav>
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-bracket">[</span>Simrat Singh<span class="brand-bracket">]</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="navlinks" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-box" aria-hidden="true">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </span>
+      </button>
+      <ul class="navlinks" id="navlinks">
+        <li><a class="nav-item" href="index.html">Home</a></li>
+        <li><a class="nav-item" href="about.html">About</a></li>
+        <li><a class="nav-item" href="projects.html">Projects</a></li>
+        <li><a class="nav-item" href="resume.html">Resume</a></li>
+        <li><a class="nav-item" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head" data-reveal="up">
+          <span class="sec-index mono">05 //</span>
+          <h1 class="sec-title">Contact</h1>
+        </div>
+
+        <p class="sec-lede" data-reveal="up">
+          Open to internships, applied ML collaborations, and research conversations.
+          Email is the fastest way to reach me.
+        </p>
+
+        <div class="feature-grid" data-reveal-group>
+          <!-- Email is the real channel, so it gets the weight. -->
+          <div class="glass-card feature-card spotlight-card" data-reveal="up">
+            <div>
+              <p class="feature-eyebrow">Primary contact</p>
+              <a class="feature-value" href="mailto:simrat_singh2315230@gndec.ac.in">simrat_singh2315230@gndec.ac.in</a>
+            </div>
+            <div class="project-actions">
+              <a class="btn primary" href="mailto:simrat_singh2315230@gndec.ac.in">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg>
+                <span>Send an email</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="feature-side">
+            <!-- TODO: replace with the real GitHub profile, then remove
+                 data-placeholder and swap the span for an <a>. -->
+            <div class="contact-item" data-placeholder data-reveal="up">
+              <div class="label mono">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </div>
+              <span class="contact-value">Profile link coming soon</span>
+            </div>
+
+            <!-- TODO: replace with the real LinkedIn profile. -->
+            <div class="contact-item" data-placeholder data-reveal="up">
+              <div class="label mono">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </div>
+              <span class="contact-value">Profile link coming soon</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note mt-4" data-reveal="up">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <span>
+            Based in Ludhiana, Punjab · Typically replies within a day or two.
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-wrap">
+      <span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span>
+      <span class="mono footer-note">Residual-corrected &amp; interactive by design.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

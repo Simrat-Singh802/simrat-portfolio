@@ -1,24 +1,245 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Resume — Simrat Singh</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head><body>
-<nav><div class="wrap"><a class="brand" href="index.html">Simrat Singh</a><ul class="navlinks"><li><a class="" href="index.html">Home</a></li>
-<li><a class="" href="about.html">About</a></li>
-<li><a class="" href="projects.html">Projects</a></li>
-<li><a class="active" href="resume.html">Resume</a></li>
-<li><a class="" href="contact.html">Contact</a></li></ul></div></nav>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume — Simrat Singh</title>
 
-<section><div class="wrap"><div class="sec-head"><span class="sec-index mono">04</span><h2 class="sec-title">Resume</h2></div>
-<p class="sec-lede">Keep the resume on its own page so recruiters can reach it directly from the navigation.</p>
-<div class="resume-box" id="resumeBox"><div class="dropzone" id="dropzone"><div class="dz-title mono">Drop your resume here</div><div class="dz-sub">or click to browse · PDF only</div></div><input type="file" id="resumeInput" accept="application/pdf"></div>
-</div></section>
+  <meta name="description" content="Resume of Simrat Singh — applied machine learning engineer specializing in predictive modeling, tabular inference architectures, and full-stack model deployment.">
+  <meta name="author" content="Simrat Singh">
+  <meta name="theme-color" content="#07090e">
+  <link rel="canonical" href="resume.html">
 
-<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span><span>Built with a residual correction curve, on purpose.</span></div></footer>
-<div class="toast" id="toast"></div>
-<script src="script.js"></script>
-</body></html>
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Resume — Simrat Singh">
+  <meta property="og:description" content="Predictive modeling, tabular inference architectures, and full-stack model deployment.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Resume — Simrat Singh">
+  <meta name="twitter:description" content="Predictive modeling, tabular inference architectures, and full-stack model deployment.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307090e'/%3E%3Cpath d='M6 22C11 22 13 10 18 10s5 8 8 8' stroke='%2338bdf8' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-base.css">
+  <link rel="stylesheet" href="css/02-layout.css">
+  <link rel="stylesheet" href="css/03-components.css">
+  <link rel="stylesheet" href="css/04-animations.css">
+  <link rel="stylesheet" href="css/05-redesign.css">
+
+  <!-- Set before paint: if JS never runs, reveal targets stay visible. -->
+  <script>document.documentElement.classList.add('no-js');</script>
+</head>
+<body data-page="resume">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <span class="nav-sentinel" aria-hidden="true"></span>
+
+  <!-- NAV — identical across all pages; active state derived in js/nav.js -->
+  <nav>
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-bracket">[</span>Simrat Singh<span class="brand-bracket">]</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="navlinks" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-box" aria-hidden="true">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </span>
+      </button>
+      <ul class="navlinks" id="navlinks">
+        <li><a class="nav-item" href="index.html">Home</a></li>
+        <li><a class="nav-item" href="about.html">About</a></li>
+        <li><a class="nav-item" href="projects.html">Projects</a></li>
+        <li><a class="nav-item" href="resume.html">Resume</a></li>
+        <li><a class="nav-item" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head" data-reveal="up">
+          <span class="sec-index mono">04 //</span>
+          <h1 class="sec-title">Curriculum Vitae</h1>
+        </div>
+
+        <div class="resume-hero" data-reveal="up">
+          <p class="sec-lede">
+            Applied machine learning engineer specializing in predictive modeling,
+            tabular inference architectures, and full-stack model deployment.
+          </p>
+          <div class="resume-quick-actions">
+            <!-- TODO: add resume.pdf to the project root, then restore the
+                 download button:
+                 <a href="resume.pdf" download="Simrat_Singh_Resume.pdf"
+                    class="btn primary">Download PDF</a> -->
+            <button class="btn primary" type="button" onclick="window.print()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              <span>Print / Save as PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="resume-grid">
+          <!-- Left: experience & education -->
+          <div class="resume-main" data-reveal-group>
+            <div class="glass-card cv-block" data-reveal="up">
+              <div class="cv-section-title">
+                <span class="mono sec-sub-index">01.</span>
+                <h2>Engineering &amp; Research</h2>
+              </div>
+
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-header">
+                    <div>
+                      <h3 class="timeline-role">Lead Developer &amp; Researcher</h3>
+                      <span class="timeline-org">Wheat Yield &amp; Agronomic Forecasting</span>
+                    </div>
+                    <span class="timeline-date mono">2026 — Present</span>
+                  </div>
+                  <p class="timeline-body">
+                    Engineered end-to-end multi-parameter regression models incorporating
+                    regional soil health indicators (pH, N, P, K) and historical climate
+                    telemetry across Punjab. Benchmarked XGBoost and Multi-Layer Perceptron
+                    baselines, deploying a real-time Flask API.
+                  </p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-header">
+                    <div>
+                      <h3 class="timeline-role">Machine Learning Developer</h3>
+                      <span class="timeline-org">Residual Trajectory Forecasting System</span>
+                    </div>
+                    <span class="timeline-date mono">2025 — 2026</span>
+                  </div>
+                  <p class="timeline-body">
+                    Designed a hybrid kinematic-neural architecture combining
+                    constant-velocity trajectory estimates with a residual LSTM to correct
+                    multi-step drift. Delivered an interactive high-throughput FastAPI
+                    inference service with Plotly 3D visualizers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card cv-block" data-reveal="up">
+              <div class="cv-section-title">
+                <span class="mono sec-sub-index">02.</span>
+                <h2>Education</h2>
+              </div>
+
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-header">
+                    <div>
+                      <h3 class="timeline-role">B.Tech in Computer Science &amp; Engineering</h3>
+                      <span class="timeline-org">Guru Nanak Dev Engineering College, Ludhiana</span>
+                    </div>
+                    <span class="timeline-date mono">Graduating 2027</span>
+                  </div>
+                  <p class="timeline-body">
+                    Core coursework: Algorithms, Distributed Data Systems, Artificial
+                    Neural Networks, Computer Vision, Operating Systems, Relational
+                    Database Architectures.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: skills & sandbox -->
+          <div class="resume-sidebar" data-reveal-group>
+            <div class="glass-card cv-block" data-reveal="up">
+              <div class="cv-section-title">
+                <span class="mono sec-sub-index">03.</span>
+                <h2>Technical Stack</h2>
+              </div>
+
+              <div class="skill-group">
+                <span class="skill-category mono">LANGUAGES</span>
+                <div class="tags-container">
+                  <span class="tag mono">Python</span>
+                  <span class="tag mono">C++</span>
+                  <span class="tag mono">SQL</span>
+                  <span class="tag mono">JavaScript</span>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <span class="skill-category mono">ML &amp; DATA</span>
+                <div class="tags-container">
+                  <span class="tag mono">PyTorch</span>
+                  <span class="tag mono">XGBoost</span>
+                  <span class="tag mono">Scikit-Learn</span>
+                  <span class="tag mono">LSTM</span>
+                  <span class="tag mono">Pandas</span>
+                  <span class="tag mono">NumPy</span>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <span class="skill-category mono">BACKEND &amp; DEPLOYMENT</span>
+                <div class="tags-container">
+                  <span class="tag mono">FastAPI</span>
+                  <span class="tag mono">Flask</span>
+                  <span class="tag mono">Docker</span>
+                  <span class="tag mono">Git / GitHub</span>
+                  <span class="tag mono">REST APIs</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card cv-block doc-sandbox" data-reveal="up">
+              <div class="cv-section-title">
+                <span class="mono sec-sub-index">04.</span>
+                <h2>Document Sandbox</h2>
+              </div>
+
+              <!-- A real <button>, so keyboard activation is free. -->
+              <button class="dropzone" type="button" id="dropzone">
+                <span class="dz-icon" aria-hidden="true">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--signal)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>
+                </span>
+                <span class="dz-title mono">Drop a PDF here</span>
+                <span class="dz-sub">or click to preview one locally</span>
+              </button>
+
+              <label class="sr-only" for="resumeInput">Choose a PDF file to preview</label>
+              <input type="file" id="resumeInput" accept="application/pdf" hidden>
+
+              <div id="pdfFeedback" class="pdf-feedback mono" hidden></div>
+
+              <p class="dz-sub" style="margin-top: var(--sp-3)">
+                Files stay in your browser — nothing is uploaded.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-wrap">
+      <span>Simrat Singh · B.Tech CSE, GNDEC Ludhiana</span>
+      <span class="mono footer-note">Residual-corrected &amp; interactive by design.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

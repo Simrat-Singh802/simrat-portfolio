@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+
+# Logs
+*.log
+
+# Node (not used today, but keeps stray installs out of the repo)
+node_modules/
